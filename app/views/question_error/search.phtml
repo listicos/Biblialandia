@@ -1,0 +1,48 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo $this->tag->linkTo(array("question_error/index", "Go Back")); ?>
+        </td>
+        <td align="right">
+            <?php echo $this->tag->linkTo(array("question_error/new", "Create ")); ?>
+        </td>
+    </tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $question_error) { ?>
+        <tr>
+            <td><?php echo $question_error->id ?></td>
+            <td><?php echo $question_error->name ?></td>
+            <td><?php echo $this->tag->linkTo(array("question_error/edit/" . $question_error->id, "Edit")); ?></td>
+            <td><?php echo $this->tag->linkTo(array("question_error/delete/" . $question_error->id, "Delete")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("question_error/search", "First") ?></td>
+                        <td><?php echo $this->tag->linkTo("question_error/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo $this->tag->linkTo("question_error/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo $this->tag->linkTo("question_error/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo $this->tag->linkTo(array("user_rate_question/index", "Go Back")); ?>
+        </td>
+        <td align="right">
+            <?php echo $this->tag->linkTo(array("user_rate_question/new", "Create ")); ?>
+        </td>
+    </tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Question</th>
+            <th>Qualification</th>
+            <th>Question Of Error</th>
+            <th>Created</th>
+            <th>Updated</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $user_rate_question) { ?>
+        <tr>
+            <td><?php echo $user_rate_question->id ?></td>
+            <td><?php echo $user_rate_question->user_id ?></td>
+            <td><?php echo $user_rate_question->question_id ?></td>
+            <td><?php echo $user_rate_question->qualification_id ?></td>
+            <td><?php echo $user_rate_question->question_error_id ?></td>
+            <td><?php echo $user_rate_question->created_at ?></td>
+            <td><?php echo $user_rate_question->updated_at ?></td>
+            <td><?php echo $this->tag->linkTo(array("user_rate_question/edit/" . $user_rate_question->id, "Edit")); ?></td>
+            <td><?php echo $this->tag->linkTo(array("user_rate_question/delete/" . $user_rate_question->id, "Delete")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("user_rate_question/search", "First") ?></td>
+                        <td><?php echo $this->tag->linkTo("user_rate_question/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo $this->tag->linkTo("user_rate_question/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo $this->tag->linkTo("user_rate_question/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

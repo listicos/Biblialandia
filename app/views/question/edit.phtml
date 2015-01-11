@@ -1,0 +1,73 @@
+
+<?php echo $this->getContent(); ?>
+
+<?php echo $this->tag->form("question/save") ?>
+
+<table width="100%">
+    <tr>
+        <td align="left"><?php echo $this->tag->linkTo(array("question", "Back")) ?></td>
+        <td align="right"><?php echo $this->tag->submitButton("Save") ?></td>
+    </tr>
+</table>
+
+<div align="center">
+    <h1>Edit question</h1>
+</div>
+
+<table>
+    <tr>
+        <td align="right">
+            <label for="question">Question</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("question", "size" => 30)) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="user_id">User</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("user_id", "type" => "number")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="question_category_id">Question Of Category</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("question_category_id", "type" => "number")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="created_at">Created</label>
+        </td>
+        <td align="left">
+                <?php echo $this->tag->textField(array("created_at", "type" => "date")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="updated_at">Updated</label>
+        </td>
+        <td align="left">
+                <?php echo $this->tag->textField(array("updated_at", "type" => "date")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="language_id">Language</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("language_id", "type" => "number")) ?>
+        </td>
+    </tr>
+
+    <tr>
+        <td><?php echo $this->tag->hiddenField("id") ?></td>
+        <td><?php echo $this->tag->submitButton("Save") ?></td>
+    </tr>
+</table>
+
+</form>

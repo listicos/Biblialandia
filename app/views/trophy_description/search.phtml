@@ -1,0 +1,54 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo $this->tag->linkTo(array("trophy_description/index", "Go Back")); ?>
+        </td>
+        <td align="right">
+            <?php echo $this->tag->linkTo(array("trophy_description/new", "Create ")); ?>
+        </td>
+    </tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Trophy</th>
+            <th>Language</th>
+            <th>Name</th>
+            <th>Description</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $trophy_description) { ?>
+        <tr>
+            <td><?php echo $trophy_description->id ?></td>
+            <td><?php echo $trophy_description->trophy_id ?></td>
+            <td><?php echo $trophy_description->language_id ?></td>
+            <td><?php echo $trophy_description->name ?></td>
+            <td><?php echo $trophy_description->description ?></td>
+            <td><?php echo $this->tag->linkTo(array("trophy_description/edit/" . $trophy_description->id, "Edit")); ?></td>
+            <td><?php echo $this->tag->linkTo(array("trophy_description/delete/" . $trophy_description->id, "Delete")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("trophy_description/search", "First") ?></td>
+                        <td><?php echo $this->tag->linkTo("trophy_description/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo $this->tag->linkTo("trophy_description/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo $this->tag->linkTo("trophy_description/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

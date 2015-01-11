@@ -1,0 +1,48 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo $this->tag->linkTo(array("qualification/index", "Go Back")); ?>
+        </td>
+        <td align="right">
+            <?php echo $this->tag->linkTo(array("qualification/new", "Create ")); ?>
+        </td>
+    </tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $qualification) { ?>
+        <tr>
+            <td><?php echo $qualification->id ?></td>
+            <td><?php echo $qualification->name ?></td>
+            <td><?php echo $this->tag->linkTo(array("qualification/edit/" . $qualification->id, "Edit")); ?></td>
+            <td><?php echo $this->tag->linkTo(array("qualification/delete/" . $qualification->id, "Delete")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("qualification/search", "First") ?></td>
+                        <td><?php echo $this->tag->linkTo("qualification/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo $this->tag->linkTo("qualification/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo $this->tag->linkTo("qualification/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

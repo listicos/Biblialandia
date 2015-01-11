@@ -1,0 +1,50 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo $this->tag->linkTo(array("user_answer/index", "Go Back")); ?>
+        </td>
+        <td align="right">
+            <?php echo $this->tag->linkTo(array("user_answer/new", "Create ")); ?>
+        </td>
+    </tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Answer</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $user_answer) { ?>
+        <tr>
+            <td><?php echo $user_answer->id ?></td>
+            <td><?php echo $user_answer->user_id ?></td>
+            <td><?php echo $user_answer->answer_id ?></td>
+            <td><?php echo $this->tag->linkTo(array("user_answer/edit/" . $user_answer->id, "Edit")); ?></td>
+            <td><?php echo $this->tag->linkTo(array("user_answer/delete/" . $user_answer->id, "Delete")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("user_answer/search", "First") ?></td>
+                        <td><?php echo $this->tag->linkTo("user_answer/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo $this->tag->linkTo("user_answer/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo $this->tag->linkTo("user_answer/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
